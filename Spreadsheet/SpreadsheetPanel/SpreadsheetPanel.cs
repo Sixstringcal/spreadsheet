@@ -436,6 +436,21 @@ namespace SSGui
                 }
                 Invalidate();
             }
+            
+            /// <summary>
+            /// The purpose of the superclass <see cref="Panel"/> is to be a
+            /// container. As such, it was not designed to be available for
+            /// focus when selected by mouse; this way it does not steal the
+            /// focus from a child control. To change that behavior, we force
+            /// this <see cref="SpreadsheetPanel"/> class to take focus when
+            /// selected.
+            /// </summary>
+            /// <param name="e"></param>
+            protected override void OnMouseDown(MouseEventArgs e)
+            {
+                Focus();
+                base.OnMouseDown(e);
+            }
         }
     }
 }
