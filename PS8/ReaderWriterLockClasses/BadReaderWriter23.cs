@@ -11,17 +11,18 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// Behaves just like it is supposed to behave except that it uses a timeout that is too long.
+    /// Behaves just like it is supposed to behave except that it uses a timeout that is too long
+    ///  when trying to enter a write lock.
     /// </summary>
-    public class BadReaderWriter22: ReaderWriterLockSlimWrapper
+    public class BadReaderWriter23: ReaderWriterLockSlimWrapper
     {
-        public override bool TryEnterReadLock(int n)
+        public override bool TryEnterWriteLock(int n)
         {
             if (n >= 0)
             {
                 n = 2 * n + 500;
             }
-            return base.TryEnterReadLock(n);
+            return base.TryEnterWriteLock(n);
         }
     }
 }

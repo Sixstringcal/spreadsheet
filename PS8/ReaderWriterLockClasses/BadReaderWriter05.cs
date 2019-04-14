@@ -13,7 +13,7 @@ namespace ReaderWriterLockClasses
     /// <summary>
     /// Bad WaitingWriteCount return value
     /// </summary>
-    public class BadReaderWriter5 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter05 : ReaderWriterLockSlimWrapper
     {
         public override int WaitingWriteCount => 
             (base.WaitingWriteCount == 0) ? 0 : base.WaitingWriteCount + 1;

@@ -10,16 +10,16 @@ using System.Threading;
 
 namespace ReaderWriterLockClasses
 {
-    /// <summary>
-    /// TryEnterWriteLock doesn't throw RecursionLockException when read lock already held
-    /// </summary>
-    public class BadReaderWriter15 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter12 : ReaderWriterLockSlimWrapper
     {
-        public override bool TryEnterWriteLock (int n)
+        /// <summary>
+        /// TryEnterReadLock doesn't throw LockRecursionException when read lock already held
+        /// </summary>
+        public override bool TryEnterReadLock (int n)
         {
             if (!base.IsReadLockHeld)
             {
-                return TryEnterWriteLock(n);
+                return base.TryEnterReadLock(n);
             }
             else
             {

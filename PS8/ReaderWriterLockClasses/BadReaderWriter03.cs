@@ -13,7 +13,7 @@ namespace ReaderWriterLockClasses
     /// <summary>
     /// Bad IsWriteLockHeld return value
     /// </summary>
-    public class BadReaderWriter3 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter03 : ReaderWriterLockSlimWrapper
     {
         public override bool IsWriteLockHeld => false;
     }

@@ -1,5 +1,5 @@
 ﻿// Written by Joseph Zachary for CS 3500
-// Copyright Joseph Zachary, April 2019
+// Copyright Joseph Zachary, March 2019
 
 using System;
 using System.Collections.Generic;
@@ -11,17 +11,19 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// TryEnterReadLock doesn't throw ArgumentOutOfRangeException when n < -1
+    /// Behaves just like it is supposed to behave except that it uses a timeout that is too long
+    /// when trying to enter a read lock.
     /// </summary>
-    public class BadReaderWriter14 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter22: ReaderWriterLockSlimWrapper
     {
         public override bool TryEnterReadLock(int n)
         {
-            if (n < -1)
+            if (n >= 0)
             {
-                n = -n;
+                n = 2 * n + 500;
             }
-            return TryEnterReadLock(n);
+            return base.TryEnterReadLock(n);
         }
     }
 }
+

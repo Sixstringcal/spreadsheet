@@ -17,7 +17,7 @@ namespace ReaderWriterLockClasses
     public class BadReaderWriter21: ReaderWriterLockSlimWrapper
     {
         // Used to prevent concurrent reads
-        private static readonly object sync = new object();
+        private readonly object sync = new object();
 
         public override bool TryEnterReadLock(int n)
         {

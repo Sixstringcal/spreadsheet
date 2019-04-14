@@ -11,17 +11,16 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// TryEnterWriteLock doesn't throw ArgumentOutOfRangeException when n < -1
+    /// EnterReadLock doesn't throw LockRecursionException when write lock already held
     /// </summary>
-    public class BadReaderWriter17 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter07 : ReaderWriterLockSlimWrapper
     {
-        public override bool TryEnterWriteLock(int n)
+        public override void EnterReadLock()
         {
-            if (n < -1)
+            if (!base.IsWriteLockHeld)
             {
-                n = -n;
+                base.EnterReadLock();
             }
-            return TryEnterWriteLock(n);
         }
     }
 }

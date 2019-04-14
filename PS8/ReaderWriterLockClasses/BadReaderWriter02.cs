@@ -11,11 +11,10 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// Bad WaitingReadCount return value
+    /// Bad IsReadLockHeld return value
     /// </summary>
-    public class BadReaderWriter4 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter02 : ReaderWriterLockSlimWrapper
     {
-        public override int WaitingReadCount =>
-            (base.WaitingReadCount == 0) ? 0 : base.WaitingReadCount + 1;
+        public override bool IsReadLockHeld => false;
     }
 }

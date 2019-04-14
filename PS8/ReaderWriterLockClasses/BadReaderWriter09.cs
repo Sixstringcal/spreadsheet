@@ -11,9 +11,9 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// EnterWriteLock doesn't throw RecursionLockException when write lock already held
+    /// EnterWriteLock doesn't throw LockRecursionException when write lock already held
     /// </summary>
-    public class BadReaderWriter9 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter09 : ReaderWriterLockSlimWrapper
     {
         public override void EnterWriteLock ()
         {

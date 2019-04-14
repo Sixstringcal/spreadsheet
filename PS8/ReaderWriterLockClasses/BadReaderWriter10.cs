@@ -11,15 +11,18 @@ using System.Threading;
 namespace ReaderWriterLockClasses
 {
     /// <summary>
-    /// EnterReadLock doesn't throw RecursionLockException when write lock already held
+    /// ExitReadLock doesn't throw SynchronizationLockException
     /// </summary>
-    public class BadReaderWriter7 : ReaderWriterLockSlimWrapper
+    public class BadReaderWriter10 : ReaderWriterLockSlimWrapper
     {
-        public override void EnterReadLock ()
+        public override void ExitReadLock ()
         {
-            if (!base.IsWriteLockHeld)
+            try
             {
-                base.EnterReadLock();
+                base.ExitReadLock();
+            }
+            catch (SynchronizationLockException)
+            {
             }
         }
     }
