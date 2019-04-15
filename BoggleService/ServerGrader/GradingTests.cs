@@ -1039,6 +1039,7 @@ namespace ServerGrader
         [TestMethod]
         public void TestStatus22()
         {
+            Reset();
             String player1 = MakeUser("Player 1", OK).Result;
             String player2 = MakeUser("Player 2", OK).Result;
             JoinGame(player1, 10).Wait();
